@@ -12,6 +12,12 @@ python -m venv venv
 _python-dotenv_ is needed so that environment variables automatically imported from _.flaskenv_ 
 when run the flask command
 
+#Flask shell context
+Start a Python interpreter in the context of the application:
+```
+flask shell
+```
+
 #Pycharm project setup
 To run the webapp, add a new Python configuration with following values
 ```
