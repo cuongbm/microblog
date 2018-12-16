@@ -1,4 +1,4 @@
-# **Environment setup**
+#Environment setup
 
 ###Create new virtual environment
 ```
@@ -31,7 +31,8 @@ Script path: <path to tests dir>
 Patterns: *test*.py
 ```
 
-#**Run the app**
+#Run the app
+To run the webapp
 ```
 .\venv\Scripts\activate.bat
 (venv) $ flask run
@@ -44,7 +45,13 @@ To register environment variable manually
 (venv) $ flask run
 ```
 
-#**Database operation**
+To run Unit Tests
+```
+.\venv\Scripts\activate.bat
+python -m unittest discover -s tests -p *test*.py
+```
+
+#Database operation
 
 After add new or make change to models, run following command to generate migration script
 ```
