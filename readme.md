@@ -46,12 +46,14 @@ To register environment variable manually
 
 #**Database operation**
 
-After add new model, run following command to generate migration script
+After add new or make change to models, run following command to generate migration script
 ```
-flask db migrate
+.\venv\Scripts\activate.bat
+flask db migrate -m "your comment"
 ```
 
 To apply the change to db run
 ```
+.\venv\Scripts\activate.bat
 flask db upgrade
 ```
