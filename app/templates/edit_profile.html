@@ -1,26 +1,10 @@
 {% extends "base.html" %}
-{% block content%}
-<form method="POST" novalidate>
-     {{ form.hidden_tag() }}
-    {% for error in form.errors: %}
-            <label>{{error}}</label>
-        {% endfor %}
-    <p>
-        {{ form.username.label }} <br/>
-        {{ form.username(length=32) }}
-        {% for error in form.username.errors: %}
-            <label>{{error}}</label>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.about_me.label }} <br/>
-        {{ form.about_me(length=140) }}
-        {% for error in form.about_me.errors: %}
-            <label>{{error}}</label>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.submit() }}
-    </p>
-</form>
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+<div class="row">
+    <div class="col-md-4">
+        {{ wtf.quick_form(form) }}
+    </div>
+</div>
 {% endblock %}

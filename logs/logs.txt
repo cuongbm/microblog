@@ -121,3 +121,5 @@ sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed
 2018-12-19 09:25:10,901 INFO: Microblog startup [in C:\exercise\microblog\app\logging.py:15]
 2018-12-19 09:25:12,607 INFO: Microblog startup [in C:\exercise\microblog\app\logging.py:15]
 2018-12-19 10:40:29,792 INFO: Microblog startup [in C:\exercise\microblog\app\logging.py:15]
+2018-12-19 11:06:20,298 INFO: Microblog startup [in C:\exercise\microblog\app\logging.py:15]
+2018-12-19 11:06:52,392 INFO: Microblog startup [in C:\exercise\microblog\app\logging.py:15]

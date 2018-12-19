@@ -52,7 +52,15 @@ def explore():
         .order_by(Post.timestamp.desc()) \
         .paginate(page, app.config['POSTS_PER_PAGE'], False)\
 
-    return render_template("index.html", title="Explore", user=current_user, posts=posts.items)
+    prev_url = None
+    if posts.has_prev:
+        prev_url = url_for('explore', page=posts.prev_num)
+
+    next_url = None
+    if posts.has_next:
+        next_url = url_for('explore', page=posts.next_num)
+
+    return render_template("index.html", title="Explore", user=current_user, posts=posts.items, next_url=next_url, prev_url=prev_url)
 
 
 @app.route("/user/<username>", methods=["GET", "POST"])
