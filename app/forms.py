@@ -47,3 +47,8 @@ class EditProfileForm(FlaskForm):
             if u is not None:
                 raise  ValidationError("User {} already exists".format(self.original_username))
 
+
+class PostForm(FlaskForm):
+    post = TextAreaField("Say something", validators=[DataRequired(), length(min=1, max=40)])
+    submit = SubmitField("Submit")
+

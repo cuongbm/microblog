@@ -11,3 +11,4 @@ class Config:
                               'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     LOG_LEVEL=logging.INFO
+    POSTS_PER_PAGE=3
