@@ -61,7 +61,7 @@ def login():
 
         return redirect(next_page)
 
-    return render_template("auth/login.html", form=form)
+    return render_template("login.html", form=form)
 
 
 @bp.route("/logout")

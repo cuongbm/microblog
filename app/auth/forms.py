@@ -39,7 +39,7 @@ class EditProfileForm(FlaskForm):
         self.original_username = original_username
 
     def validate_username(self, username):
-        if username != self.original_username:
-            u = User.query.filter_by(username=self.original_username).first()
+        if username.data != self.original_username:
+            u = User.query.filter_by(username=username.data).first()
             if u is not None:
-                raise  ValidationError("User {} already exists".format(self.original_username))
+                raise  ValidationError("User {} already exists".format(username.data))
