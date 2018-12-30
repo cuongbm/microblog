@@ -12,7 +12,7 @@ from app.models import User
 @bp.route("/register", methods=["GET", "POST"])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for("index"))
+        return redirect(url_for("main.index"))
 
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -21,7 +21,7 @@ def register():
         db.session.add(u)
         db.session.commit()
         flash("Congratulation, you are now registered member")
-        return redirect(url_for("index"))
+        return redirect(url_for("main.index"))
 
     return render_template("register.html", form=form)
 
@@ -34,7 +34,7 @@ def edit_profile():
         user.username = form.username.data
         user.about_me = form.about_me.data
         db.session.commit()
-        return redirect(url_for("user", username=user.username))
+        return redirect(url_for("main.user", username=user.username))
     elif request.method == 'GET':
         form.username.data = user.username
         form.about_me.data = user.about_me
@@ -45,7 +45,7 @@ def edit_profile():
 @bp.route("/login", methods=["GET", "POST"])
 def login():
     if current_user.is_authenticated:
-        redirect(url_for("index"))
+        redirect(url_for("main.index"))
 
     form = LoginForm()
     if form.validate_on_submit():
@@ -67,4 +67,4 @@ def login():
 @bp.route("/logout")
 def logout():
     logout_user()
-    return redirect(url_for("index"))
+    return redirect(url_for("main.index"))
