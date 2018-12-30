@@ -1,10 +1,10 @@
 from datetime import datetime
 
 from flask import render_template, flash, redirect, url_for
-from flask import request
+from flask import request, current_app
 from flask_login import current_user, login_required
 
-from app import app, db
+from app import db
 from app.main.forms import PostForm
 from app.models import User, Post
 from app.main import bp
@@ -32,7 +32,7 @@ def index():
         return redirect(url_for("main.index"))
 
     posts = user.followed_posts()\
-        .paginate(page, app.config['POSTS_PER_PAGE'], False)\
+        .paginate(page, current_app.config['POSTS_PER_PAGE'], False)\
 
     prev_url = None
     if posts.has_prev:
@@ -50,7 +50,7 @@ def explore():
     page = request.args.get('page', 1, type=int)
     posts = Post.query\
         .order_by(Post.timestamp.desc()) \
-        .paginate(page, app.config['POSTS_PER_PAGE'], False)\
+        .paginate(page, current_app.config['POSTS_PER_PAGE'], False)\
 
     prev_url = None
     if posts.has_prev:

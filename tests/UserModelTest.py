@@ -4,13 +4,15 @@ from datetime import timedelta, datetime
 
 from flask_sqlalchemy import SQLAlchemy
 
-from app import app, db
+from app import db, createApp
 from app.models import User, Post
+from tests.TestConfig import TestConfig
 
 
 class UserModelTest(unittest.TestCase):
     def setUp(self):
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
+        app = createApp(TestConfig())
+        app.app_context().push()
         db.create_all()
 
     def tearDown(self):
