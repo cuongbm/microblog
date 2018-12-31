@@ -54,3 +54,6 @@
 2018-12-31 11:19:45,007 INFO: Microblog startup [in C:\exercise\microblog\app\logging.py:14]
 2018-12-31 11:49:22,315 INFO: Microblog startup [in C:\exercise\microblog\app\logging.py:14]
 2018-12-31 12:02:44,153 INFO: Microblog startup [in C:\exercise\microblog\app\logging.py:14]
+2018-12-31 12:03:43,537 INFO: Microblog startup [in C:\exercise\microblog\app\logging.py:20]
+2018-12-31 14:50:16,611 INFO: Microblog startup [in C:\exercise\microblog\app\logging.py:20]
+2018-12-31 14:54:21,457 INFO: Microblog startup [in C:\exercise\microblog\app\logging.py:20]
