@@ -12,3 +12,4 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     LOG_LEVEL=logging.INFO
     POSTS_PER_PAGE=3
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')

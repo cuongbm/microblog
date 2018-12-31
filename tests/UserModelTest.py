@@ -2,23 +2,12 @@ import os
 import unittest
 from datetime import timedelta, datetime
 
-from flask_sqlalchemy import SQLAlchemy
-
-from app import db, createApp
+from app import db
 from app.models import User, Post
-from tests.TestConfig import TestConfig
+from tests.BaseDbTest import BaseDbTest
 
 
-class UserModelTest(unittest.TestCase):
-    def setUp(self):
-        app = createApp(TestConfig())
-        app.app_context().push()
-        db.create_all()
-
-    def tearDown(self):
-        db.session.remove()
-        db.drop_all()
-
+class UserModelTest(BaseDbTest):
     def test_password_hashing(self):
         u = User(username='susan')
         u.set_password('cat')

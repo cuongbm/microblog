@@ -6,6 +6,8 @@ from flask_bootstrap import Bootstrap
 
 from app.logging import configLogging
 from config import Config
+from elasticsearch import Elasticsearch
+
 
 db = SQLAlchemy()
 
@@ -34,5 +36,9 @@ def createApp(config_class=Config):
     app.register_blueprint(auth_bp, url_prefix="/auth")
     app.register_blueprint(main_bp)
     configLogging(app)
+
+    app.elasticsearch = Elasticsearch(app.config["ELASTICSEARCH_URL"]
+                                      if app.config["ELASTICSEARCH_URL"] else None)
+
 
     return app
