@@ -1,4 +1,5 @@
-from datetime import datetime
+import base64
+from datetime import datetime, timedelta
 from hashlib import md5
 
 from flask import url_for
@@ -62,6 +63,44 @@ class SearchableMixin:
 
 db.event.listen(db.session, 'before_commit', SearchableMixin.before_commit)
 db.event.listen(db.session, 'after_commit', SearchableMixin.after_commit)
+
+
+class Token(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    userid = db.Column(db.Integer, db.ForeignKey("user.id"))
+    user = db.relationship("User")
+    token = db.Column(db.String(32), index=True, unique=True)
+    token_expiration = db.Column(db.DateTime)
+
+    @staticmethod
+    def get_token(user, expires_in=3600):
+        exist = Token.query\
+            .filter_by(userid=user.id)\
+            .order_by(Token.token_expiration.desc())\
+            .first()
+        if exist is None or exist.is_expired():
+            newtk = Token(userid=user.id,
+                          token=base64.b64encode(os.urandom(24)).decode('utf-8'),
+                          token_expiration=datetime.utcnow() + timedelta(seconds=expires_in))
+            db.session.add(newtk)
+            return newtk
+
+        exist.token_expiration = datetime.utcnow() + timedelta(seconds=expires_in)
+        return exist
+
+    def revoke(self):
+        self.token_expiration = datetime.utcnow() - timedelta(seconds=1)
+
+    def is_expired(self):
+        return self.token_expiration < datetime.utcnow()
+
+    @staticmethod
+    def check(tokenStr):
+        tk = Token.query.filter_by(token=tokenStr).first()
+        if tk is None or tk.is_expired():
+            return None
+        return tk
+
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
