@@ -1,5 +1,4 @@
 #Environment setup
-test
 
 ###Create new virtual environment
 ```
