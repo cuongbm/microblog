@@ -1,5 +1,9 @@
 FROM python:3.6-alpine
 
+RUN apk update && \
+    apk add --virtual build-deps gcc python-dev musl-dev && \
+    apk add postgresql-dev
+
 RUN adduser -D microblog
 
 WORKDIR /home/microblog
