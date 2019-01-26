@@ -1,13 +1,17 @@
 {% extends 'bootstrap/base.html'%}
 {%block title%}
     {% if title %}
-        {{ title }} - Microblog
+        {{ title }} - Microblog - Helm Demo
     {% else %}
-        Welcome to Microblog
+        Welcome to Microblog - Helm Demo
     {% endif %}
 {%endblock%}
-
 {%block navbar%}
+    <style>
+        .navbar.navbar-default {
+            background-color: #efefef;
+        }
+    </style>
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">

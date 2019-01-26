@@ -23,6 +23,11 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          {{- if .Values.mariadb.enabled }}
+          - name: DATABASE_URL
+            value: mysql+pymysql://{{ .Values.mariadb.db.user }}:{{ .Values.mariadb.db.password }}@{{ template "mariadb.fullname" . }}/{{ .Values.mariadb.db.name }}
+          {{- end }}
           ports:
             - name: http
               containerPort: 5000
