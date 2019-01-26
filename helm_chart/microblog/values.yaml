@@ -92,4 +92,4 @@ mariadb:
       ##
       # storageClass: "-"
       accessMode: ReadWriteOnce
-      size: 1Gi
+      size: 2Gi
