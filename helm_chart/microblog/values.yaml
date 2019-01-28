@@ -65,7 +65,7 @@ mariadb:
   ## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-user-on-first-run
   ##
   db:
-    name2: microblog
+    name: microblog
     user: microblog
     ## If the password is not specified, mariadb will generates a random password
     ##
