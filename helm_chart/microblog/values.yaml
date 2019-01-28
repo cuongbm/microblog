@@ -67,6 +67,7 @@ mariadb:
   db:
     name: microblog
     user: microblog
+    name1: testvalue
     ## If the password is not specified, mariadb will generates a random password
     ##
     password: microblog
