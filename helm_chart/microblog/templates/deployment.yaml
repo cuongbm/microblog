@@ -47,7 +47,7 @@ spec:
       initContainers:
       - name: init-myservice
         image: busybox
-        command: ['sh', '-c', 'until nslookup {{ template "mariadb.fullname" . }}; do echo waiting for {{ template "mariadb.fullname" . }}; sleep 2; done;']
+        command: ['sh', '-c', 'until nslookup {{ template "mariadb.fullname" . }}; do echo waiting for {{ template "mariadb.fullname" . }}; sleep 2; done; sleep 10']
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
