@@ -33,12 +33,12 @@ spec:
               containerPort: 5000
               protocol: TCP
           livenessProbe:
-            initialDelaySeconds: 10
+            initialDelaySeconds: 17
             httpGet:
               path: /
               port: 5000
           readinessProbe:
-            initialDelaySeconds: 5
+            initialDelaySeconds: 17
             httpGet:
               path: /
               port: 5000
